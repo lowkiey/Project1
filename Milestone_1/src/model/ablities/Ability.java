@@ -41,6 +41,6 @@ int required) {
 }
 
 public static void main(String[]args) {
-	System.out.print("to get pushed");
+	System.out.print("to get pulled");
 }
 }
