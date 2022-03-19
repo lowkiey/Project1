@@ -39,5 +39,8 @@ int required) {
 	this.castArea=area;
 	this.requiredActionPoints=required;
 }
-}
 
+public static void main(String[]args) {
+	System.out.print("to get pushed");
+}
+}
