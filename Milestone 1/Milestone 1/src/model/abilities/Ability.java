@@ -2,6 +2,7 @@ package model.abilities;
 
 public class Ability {
 	private String name;
+	private int manaCost;
 	private int baseCooldown;
 	private int currentCooldown;
 	private int castRange;
@@ -20,8 +21,6 @@ public class Ability {
 	public String getName() {
 		return name;
 	}
-
-	private int manaCost;
 
 	public int getManaCost() {
 		return manaCost;

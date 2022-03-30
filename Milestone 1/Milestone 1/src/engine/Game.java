@@ -17,6 +17,7 @@ import model.effects.Disarm;
 import model.effects.Dodge;
 import model.effects.Effect;
 import model.effects.Embrace;
+import model.effects.PowerUp;
 import model.effects.Root;
 import model.effects.Shield;
 import model.effects.Shock;
@@ -155,10 +156,8 @@ public class Game {
 			return new Disarm(duration);
 		if (name.equals("Dodge"))
 			return new Dodge(duration);
-		if (name.equals("Dodge"))
-			return new Dodge(duration);
-		if (name.equals("Embrace"))
-			return new Embrace(duration);
+		if (name.equals("PowerUp"))
+			return new PowerUp(duration);
 		if (name.equals("Root"))
 			return new Root(duration);
 		if (name.equals("Shield"))
@@ -179,7 +178,7 @@ public class Game {
 		FileReader fileReader = new FileReader(filePath);
 		BufferedReader br = new BufferedReader(fileReader);
 		String currentLine = br.readLine();
-		wh ile (currentLine != null) {
+		while (currentLine != null) {
 			String[] ae = currentLine.split(",");
 			String name = ae[1];
 			int maxHP = Integer.parseInt(ae[2]);
@@ -191,48 +190,33 @@ public class Game {
 			String ability1Name = ae[8];
 			String ability2Name = ae[9];
 			String ability3Name = ae[10];
+
 			switch (ae[0]) {
 			case "A":
 				AntiHero a = new AntiHero(name, maxHP, mana, maxActions, speed, attackRange, attackDamage);
 				availableChampions.add(a);
-				Ability a1 = getAbilityFromAvailable(ability1Name);
-				if (a1 != null)
-					a.getAbilities().add(a1);
-				Ability a2 = getAbilityFromAvailable(ability1Name);
-				if (a2 != null)
-					a.getAbilities().add(a2);
-				Ability a3 = getAbilityFromAvailable(ability1Name);
-				if (a3 != null)
-					a.getAbilities().add(a3);
-				availableChampions.add(a);
+				a.getAbilities().add(getAbilityFromAvailable(ability1Name));
+				a.getAbilities().add(getAbilityFromAvailable(ability2Name));
+				a.getAbilities().add(getAbilityFromAvailable(ability3Name));
+				break;
 			case "H":
 				Hero h = new Hero(name, maxHP, mana, maxActions, speed, attackRange, attackDamage);
 				availableChampions.add(h);
-				Ability h1 = getAbilityFromAvailable(ability1Name);
-				if (h1 != null)
-					h.getAbilities().add(h1);
-				Ability h2 = getAbilityFromAvailable(ability1Name);
-				if (h2 != null)
-					h.getAbilities().add(h2);
-				Ability h3 = getAbilityFromAvailable(ability1Name);
-				if (h3 != null)
-					h.getAbilities().add(h3);
-				availableChampions.add(h);
+				h.getAbilities().add(getAbilityFromAvailable(ability1Name));
+				h.getAbilities().add(getAbilityFromAvailable(ability2Name));
+				h.getAbilities().add(getAbilityFromAvailable(ability3Name));
+				break;
 			case "V":
 				Villain v = new Villain(name, maxHP, mana, maxActions, speed, attackRange, attackDamage);
 				availableChampions.add(v);
-				Ability v1 = getAbilityFromAvailable(ability1Name);
-				if (v1 != null)
-					v.getAbilities().add(v1);
-				Ability v2 = getAbilityFromAvailable(ability1Name);
-				if (v2 != null)
-					v.getAbilities().add(v2);
-				Ability v3 = getAbilityFromAvailable(ability1Name);
-				if (v3 != null)
-					v.getAbilities().add(v3);
-				availableChampions.add(v);
+				v.getAbilities().add(getAbilityFromAvailable(ability1Name));
+				v.getAbilities().add(getAbilityFromAvailable(ability2Name));
+				v.getAbilities().add(getAbilityFromAvailable(ability3Name));
+				break;
 			}
+
 			currentLine = br.readLine();
+
 		}
 	}
 
