@@ -1,8 +1,8 @@
 package model.effects;
+
 public class Stun extends Effect {
-public Stun(String name, int duration, EffectType type) {
-		super(name, duration, type);
+	public Stun(int duration) {
+		super("Stun", duration, EffectType.DEBUFF);
 	}
 
-EffectType DEBUFF;
 }
